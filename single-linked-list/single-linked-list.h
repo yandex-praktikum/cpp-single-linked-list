@@ -302,7 +302,6 @@ private:
     template <typename Iterator>
     void init_range(Iterator range_begin, Iterator range_end)
     {
-        assert(size_ == 0 && head_.next_node == nullptr);
 
         SingleLinkedList tmp;
 
@@ -348,17 +347,17 @@ bool operator<(const SingleLinkedList<Type>& lhs, const SingleLinkedList<Type>& 
 template <typename Type>
 bool operator<=(const SingleLinkedList<Type>& lhs, const SingleLinkedList<Type>& rhs) 
 {
-    return (lhs < rhs || lhs == rhs);
+    return !(rhs < lhs);
 }
 
 template <typename Type>
 bool operator>(const SingleLinkedList<Type>& lhs, const SingleLinkedList<Type>& rhs) 
 {
-    return !(lhs < rhs);
+    return rhs < lhs;
 }
 
 template <typename Type>
 bool operator>=(const SingleLinkedList<Type>& lhs, const SingleLinkedList<Type>& rhs) 
 {
-    return (!(lhs < rhs) || lhs == rhs);
+    return (lhs < rhs);
 } 
